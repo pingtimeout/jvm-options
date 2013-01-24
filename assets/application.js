@@ -26,23 +26,12 @@ function filterDisplayedOptions() {
         for (i = 0; i < tokens.length; i++) {
             if ($(this).text().toLowerCase().indexOf(tokens[i]) == -1) {
                 $(this).css('display', 'none');
-            } else {
-                nbDisplayedOptions++;
             }
         }
     });
 
-    // Case sensitive version :
-    // $("div.jvm-option:not(:contains('" + query + "'))").css('display', 'none');
-    // $("div.jvm-option:contains('" + query + "')").css('display', 'block');
-
+    nbDisplayedOptions = $("div.jvm-option:visible").length;
     $("#options-indicator").html(nbDisplayedOptions + " matching options (total : " + nbOptions + ")");
-
-    if (nbDisplayedOptions == 0) {
-        $("#no-result").css('display', 'block');
-    } else {
-        $("#no-result").css('display', 'none');
-    }
 }
 
 function displayHelp() {
